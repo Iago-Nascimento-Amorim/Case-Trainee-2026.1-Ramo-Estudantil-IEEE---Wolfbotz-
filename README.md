@@ -59,7 +59,7 @@ O firmware foi desenvolvido em C++ para ESP32 utilizando **FreeRTOS** com arquit
 - **`vTaskBuscaEsquerda`** — monitora o sensor ultrassônico esquerdo continuamente, medindo a distância lateral enquanto o robô avança a velocidade constante. Detecta geometricamente a abertura e o fechamento de uma vaga à esquerda.
 - **`vTaskBuscaDireita`** — opera em paralelo com a mesma lógica para o sensor direito, detectando vagas à direita.
 
-Um semáforo binário garante que apenas uma das tasks acesse o hardware de movimento por vez. Quando uma das tasks detecta uma vaga com espaço suficiente (calculado geometricamente com base no tempo de exposição e na velocidade do robô), ela aciona a sequência de manobra automatizada de estacionamento.
+Um semáforo binário garante que apenas uma das tasks acesse o hardware de medição por vez. Quando uma das tasks detecta uma vaga com espaço suficiente (calculado geometricamente com base no tempo de exposição e na velocidade do robô), ela aciona a sequência de manobra automatizada de estacionamento e desativa a busca para os dois lados.
 
 ---
 
@@ -72,8 +72,8 @@ O robô também pode ser operado manualmente via Bluetooth pelo aplicativo **Ard
 | BACK | Recuar |
 | LEFT | Girar à esquerda |
 | RIGHT | Girar à direita |
-| CIRCLE | Iniciar busca autônoma de vaga |
-| SQUARE | Parar / cancelar movimento |
+| CIRCLE | Iniciar modo de controle remoto |
+| SQUARE | Iniciar modo de busca autônoma de vaga |
 
 ---
 
